@@ -1,0 +1,107 @@
+=== Run information ===
+
+Scheme:       weka.clusterers.EM -I 100 -N 3 -X 10 -max -1 -ll-cv 1.0E-6 -ll-iter 1.0E-6 -M 1.0E-6 -K 10 -num-slots 1 -S 100
+Relation:     cereals-weka.filters.unsupervised.attribute.ReplaceMissingValues-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0
+Instances:    77
+Attributes:   16
+              calories
+              protein
+              fat
+              sodium
+              fiber
+              carbo
+              sugars
+              potass
+              vitamins
+              shelf
+              weight
+              cups
+              rating
+Ignored:
+              name
+              mfr
+              type
+Test mode:    evaluate on training data
+
+
+=== Clustering model (full training set) ===
+
+
+EM
+==
+
+Number of clusters: 3
+Number of iterations performed: 1
+
+
+            Cluster
+Attribute         0       1       2
+             (0.26)  (0.27)  (0.47)
+====================================
+calories
+  mean        0.5589  0.4554  0.5287
+  std. dev.   0.0432  0.0763  0.2411
+
+protein
+  mean        0.1006  0.3969  0.3756
+  std. dev.   0.1174  0.2662  0.1404
+
+fat
+  mean         0.203  0.1185  0.2498
+  std. dev.    0.156  0.1462  0.2302
+
+sodium
+  mean        0.5319  0.4688  0.4977
+  std. dev.   0.1785  0.3646  0.2232
+
+fiber
+  mean         0.036   0.134  0.2304
+  std. dev.   0.0406  0.0969  0.2016
+
+carbo
+  mean        0.5631  0.7474  0.6432
+  std. dev.    0.069  0.2109  0.1708
+
+sugars
+  mean        0.7818  0.2365  0.4815
+  std. dev.   0.1228  0.1435  0.2406
+
+potass
+  mean        0.1327  0.2447  0.4102
+  std. dev.   0.0541  0.1176  0.2415
+
+vitamins
+  mean          0.25   0.189  0.3533
+  std. dev.   0.0055  0.1074  0.2957
+
+shelf
+  mean        0.3616  0.1657  0.9862
+  std. dev.   0.2402  0.2551  0.0819
+
+weight
+  mean           0.5  0.4917  0.5675
+  std. dev.        0  0.0366  0.2096
+
+cups
+  mean        0.5041  0.5473  0.3794
+  std. dev.    0.128  0.1721  0.1867
+
+rating
+  mean       28.3508 52.4828 45.0929
+  std. dev.   5.2206 10.4881 12.7078
+
+
+
+Time taken to build model (full training data) : 0.04 seconds
+
+=== Model and evaluation on training set ===
+
+Clustered Instances
+
+0      23 ( 30%)
+1      20 ( 26%)
+2      34 ( 44%)
+
+
+Log likelihood: 5.01464
+
