@@ -1,7 +1,7 @@
 === Run information ===
 
-Scheme:       weka.clusterers.EM -I 100 -N 5 -X 10 -max -1 -ll-cv 1.0E-6 -ll-iter 1.0E-6 -M 1.0E-6 -K 10 -num-slots 1 -S 100
-Relation:     cereals-weka.filters.unsupervised.attribute.ReplaceMissingValues-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0
+Scheme:       weka.clusterers.SimpleKMeans -init 0 -max-candidates 100 -periodic-pruning 10000 -min-density 2.0 -t1 -1.25 -t2 -1.0 -N 5 -A "weka.core.EuclideanDistance -R first-last" -I 500 -num-slots 1 -S 10
+Relation:     cereals-weka.filters.unsupervised.attribute.ReplaceMissingValues-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0
 Instances:    77
 Attributes:   16
               calories
@@ -27,83 +27,53 @@ Test mode:    evaluate on training data
 === Clustering model (full training set) ===
 
 
-EM
-==
+kMeans
+======
 
-Number of clusters: 5
-Number of iterations performed: 2
+Number of iterations: 6
+Within cluster sum of squared errors: 25.71312405440395
 
+Initial starting points (random):
 
-            Cluster
-Attribute         0       1       2       3       4
-             (0.12)  (0.13)  (0.27)  (0.26)  (0.22)
-====================================================
-calories
-  mean        0.5735  0.2504  0.5584  0.4544  0.6741
-  std. dev.   0.1353  0.1915  0.0424  0.0761   0.157
+Cluster 0: 0.454545,0.2,0,0.90625,0.071429,0.916667,0.1875,0.108761,0.25,0,0.5,0.6,45.863324
+Cluster 1: 0.181818,0.6,0.2,0.40625,0.714286,0.25,0.4375,0.848943,0.25,1,0.5,0.064,68.402973
+Cluster 2: 0.545455,0,0.2,0.5625,0,0.541667,0.875,0.199396,0.25,0.5,0.5,0.6,22.396513
+Cluster 3: 0.636364,0,0.6,0.65625,0,0.583333,0.625,0.138973,0.25,0.5,0.5,0.4,19.823573
+Cluster 4: 0.636364,0.4,0.2,0.625,0.428571,0.5,0.9375,0.78852,0.25,1,0.83,0.336,37.840594
 
-protein
-  mean         0.292  0.3909  0.1048  0.3997  0.4175
-  std. dev.   0.0997  0.1937  0.1174   0.268  0.0897
+Missing values globally replaced with mean/mode
 
-fat
-  mean        0.1356   0.063  0.2095  0.1196  0.4177
-  std. dev.   0.0936  0.0929  0.1571  0.1466  0.2221
-
-sodium
-  mean        0.6582  0.3819  0.5357  0.4649  0.4778
-  std. dev.   0.1423  0.2709  0.1763  0.3672  0.1725
-
-fiber
-  mean         0.106  0.3494  0.0374  0.1349  0.2295
-  std. dev.   0.0905  0.3063  0.0405  0.0975  0.0933
-
-carbo
-  mean        0.8205  0.5463  0.5655   0.746    0.61
-  std. dev.   0.0938   0.172   0.069  0.2121  0.1329
-
-sugars
-  mean        0.4023   0.269  0.7738  0.2343  0.6484
-  std. dev.   0.2225  0.1525  0.1272  0.1422  0.1636
-
-potass
-  mean        0.2534  0.4736  0.1288  0.2461  0.4697
-  std. dev.   0.1731  0.3276  0.0586  0.1179  0.1405
-
-vitamins
-  mean        0.7405  0.2011    0.25  0.1876  0.2349
-  std. dev.   0.3568  0.0992  0.2234  0.1082  0.0596
-
-shelf
-  mean             1       1  0.3809  0.1525  0.9689
-  std. dev.   0.4163  0.0004  0.2629   0.234  0.1207
-
-weight
-  mean        0.5873  0.4022     0.5  0.4915    0.66
-  std. dev.   0.1717  0.1983       0   0.037   0.173
-
-cups
-  mean        0.5332  0.3034  0.5002  0.5482  0.3437
-  std. dev.   0.0931  0.2261  0.1271   0.173  0.1513
-
-rating
-  mean       40.1462 61.4907  28.576  52.636 38.2369
-  std. dev.   5.7277 11.7729  5.2499 10.4765  4.4786
+Final cluster centroids:
+                         Cluster#
+Attribute    Full Data          0          1          2          3          4
+                (77.0)     (19.0)      (7.0)     (20.0)     (17.0)     (14.0)
+=============================================================================
+calories        0.5171     0.4545     0.1558     0.5591     0.4973     0.7468
+protein         0.3091     0.3895     0.3714        0.1     0.3412     0.4286
+fat             0.2026     0.1053     0.0571        0.2     0.2118        0.4
+sodium           0.499     0.4646     0.3304     0.5313     0.5533     0.5179
+fiber           0.1537     0.1342     0.4184     0.0357     0.1282     0.2474
+carbo           0.6499     0.7566     0.4643     0.5625     0.7071     0.6533
+sugars          0.4951     0.2237     0.2589     0.7844      0.375     0.7143
+potass          0.2933     0.2438     0.5619     0.1352     0.2436     0.5123
+vitamins        0.2825     0.1842     0.1786       0.25     0.4265     0.3393
+shelf           0.6039     0.1316          1       0.35     0.9706     0.9643
+weight          0.5296     0.4911     0.3571        0.5        0.5     0.7464
+cups            0.4568     0.5592     0.2949     0.5052     0.3944     0.4057
+rating         42.6657    53.0023    64.8489    28.2854    44.1333    36.3072
 
 
 
-Time taken to build model (full training data) : 0.09 seconds
+
+Time taken to build model (full training data) : 0.01 seconds
 
 === Model and evaluation on training set ===
 
 Clustered Instances
 
-0       8 ( 10%)
-1      12 ( 16%)
-2      21 ( 27%)
-3      20 ( 26%)
-4      16 ( 21%)
-
-
-Log likelihood: 6.17144
+0      19 ( 25%)
+1       7 (  9%)
+2      20 ( 26%)
+3      17 ( 22%)
+4      14 ( 18%)
 
